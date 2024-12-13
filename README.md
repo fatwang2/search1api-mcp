@@ -1,5 +1,6 @@
 # Search1API MCP Server
 
+[![smithery badge](https://smithery.ai/badge/search1api-mcp)](https://smithery.ai/protocol/search1api-mcp)
 A Model Context Protocol (MCP) server that provides search and crawl functionality using Search1API.
 
 https://github.com/user-attachments/assets/58bc98ae-3b6b-442c-a7fc-010508b5f028
@@ -44,6 +45,14 @@ https://github.com/user-attachments/assets/58bc98ae-3b6b-442c-a7fc-010508b5f028
   * `url` (required): URL to get sitemap
 
 ## Setup Guide
+
+### Quick Installation via Smithery
+
+To install Search1API MCP for Claude Desktop automatically via [Smithery](https://smithery.ai/protocol/search1api-mcp):
+
+```bash
+npx @smithery/cli install search1api-mcp --client claude
+```
 
 ### 1. Get Search1API Key
 1. Register at [Search1API](https://www.search1api.com/)
