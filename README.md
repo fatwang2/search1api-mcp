@@ -4,6 +4,7 @@ A Model Context Protocol (MCP) server that provides search and crawl functionali
 
 https://github.com/user-attachments/assets/58bc98ae-3b6b-442c-a7fc-010508b5f028
 
+<a href="https://glama.ai/mcp/servers/xwtv89gccu"><img width="380" height="200" src="https://glama.ai/mcp/servers/xwtv89gccu/badge" alt="Search1API Server MCP server" /></a>
 
 ## Features
 
