@@ -1,5 +1,7 @@
 # Search1API MCP Server
 
+[![smithery badge](https://smithery.ai/badge/search1api-mcp)](https://smithery.ai/server/search1api-mcp)
+
 A Model Context Protocol (MCP) server that provides search and crawl functionality using Search1API.
 
 https://github.com/user-attachments/assets/58bc98ae-3b6b-442c-a7fc-010508b5f028
