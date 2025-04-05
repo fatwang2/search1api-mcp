@@ -1,6 +1,6 @@
 {
   "name": "search1api-mcp",
-  "version": "0.1.8",
+  "version": "0.2.0",
   "description": "A Model Context Protocol (MCP) server that provides search and crawl functionality using Search1API",
   "private": false,
   "type": "module",
@@ -11,14 +11,14 @@
     "build"
   ],
   "scripts": {
-    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
+    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\" && node -e \"if (!require('fs').existsSync('.env.example')) { require('fs').writeFileSync('.env.example', '# Search1API Configuration\\n# Get your API key from https://www.search1api.com/?utm_source=mcp\\nSEARCH1API_KEY=your_api_key_here\\n') }\"",
     "prepare": "npm run build",
     "watch": "tsc --watch",
     "inspector": "npx @modelcontextprotocol/inspector build/index.js"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.7.0",
-    "axios": "^1.7.8",
+    "axios": "1.8.4",
     "dotenv": "^16.4.5"
   },
   "devDependencies": {

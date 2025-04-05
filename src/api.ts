@@ -13,6 +13,10 @@ export async function makeRequest<T>(endpoint: string, data: any): Promise<T> {
   const path = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
   const url = `${baseUrl}${path}`;
 
+  // Debug log for request details (excluding sensitive info)
+  log(`Making request to: ${url}`);
+  log(`Request data: ${JSON.stringify(data, null, 2)}`);
+
   try {
     const response = await fetch(url, {
       method: 'POST',
@@ -23,8 +27,12 @@ export async function makeRequest<T>(endpoint: string, data: any): Promise<T> {
       body: JSON.stringify(data)
     });
 
+    // Log response status only
+    log(`Response status: ${response.status}`);
+
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
+      log(`Error response: ${JSON.stringify(errorData, null, 2)}`);
       throw new Error(`API error: ${response.status} ${errorData.message || response.statusText}`);
     }
 

@@ -1,6 +1,22 @@
-node_modules/
+# Environment variables
+.env
+!.env.example
+
+# Build output
 build/
+
+# Node modules
+node_modules/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
 *.log
+
 .env*
 run.sh
 .windsurfrules
