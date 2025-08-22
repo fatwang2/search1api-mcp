@@ -1,4 +1,5 @@
 # Search1API MCP Server
+[![Trust Score](https://archestra.ai/mcp-catalog/api/badge/quality/fatwang2/search1api-mcp)](https://archestra.ai/mcp-catalog/fatwang2__search1api-mcp)
 
 [中文文档](./README_zh.md)
 
