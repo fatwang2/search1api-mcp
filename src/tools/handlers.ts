@@ -12,30 +12,31 @@ import { SEARCH_TOOL, CRAWL_TOOL, SITEMAP_TOOL, NEWS_TOOL, REASONING_TOOL, TREND
  * Dispatch request based on tool name
  * @param toolName Name of the tool
  * @param args Tool parameters
+ * @param apiKey Optional per-session API key
  * @returns Tool processing result
  */
-export async function handleToolCall(toolName: string, args: unknown) {
+export async function handleToolCall(toolName: string, args: unknown, apiKey?: string) {
   log(`Handling tool call: ${toolName}`);
 
   switch (toolName) {
     case SEARCH_TOOL.name:
-      return await handleSearch(args);
-      
+      return await handleSearch(args, apiKey);
+
     case CRAWL_TOOL.name:
-      return await handleCrawl(args);
-      
+      return await handleCrawl(args, apiKey);
+
     case SITEMAP_TOOL.name:
-      return await handleSitemap(args);
-      
+      return await handleSitemap(args, apiKey);
+
     case NEWS_TOOL.name:
-      return await handleNews(args);
-      
+      return await handleNews(args, apiKey);
+
     case REASONING_TOOL.name:
-      return await handleReasoning(args);
+      return await handleReasoning(args, apiKey);
 
     case TRENDING_TOOL.name:
-      return await handleTrending(args);
-      
+      return await handleTrending(args, apiKey);
+
     default:
       log(`Unknown tool: ${toolName}`);
       throw new McpError(

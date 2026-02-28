@@ -7,7 +7,7 @@ import { McpError, ErrorCode } from "@modelcontextprotocol/sdk/types.js";
 /**
  * Implementation of the search tool
  */
-export async function handleSearch(args: unknown) {
+export async function handleSearch(args: unknown, apiKey?: string) {
   if (!isValidSearchArgs(args)) {
     throw new McpError(
       ErrorCode.InvalidParams,
@@ -18,7 +18,8 @@ export async function handleSearch(args: unknown) {
   try {
     const response = await makeRequest<SearchResponse>(
       API_CONFIG.ENDPOINTS.SEARCH,
-      args  
+      args,
+      apiKey
     );
 
     return {

@@ -30,8 +30,7 @@ if (!API_KEY) {
 
 // Final check
 if (!API_KEY) {
-  log('SEARCH1API_KEY could not be found in environment variables or the project root .env file.');
-  throw new Error("SEARCH1API_KEY is required. Set it in LibreChat's .env (ensure it's passed down) or place a .env file in the search1api-mcp project root.");
+  log('SEARCH1API_KEY not found. Stdio mode requires it; HTTP mode uses per-session keys.');
 } else {
   log('API key located successfully.');
 }

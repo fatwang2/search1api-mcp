@@ -7,7 +7,7 @@ import { McpError, ErrorCode } from "@modelcontextprotocol/sdk/types.js";
 /**
  * Implementation of the sitemap tool
  */
-export async function handleSitemap(args: unknown) {
+export async function handleSitemap(args: unknown, apiKey?: string) {
   if (!isValidSitemapArgs(args)) {
     throw new McpError(
       ErrorCode.InvalidParams,
@@ -18,7 +18,8 @@ export async function handleSitemap(args: unknown) {
   try {
     const response = await makeRequest<SitemapResponse>(
       API_CONFIG.ENDPOINTS.SITEMAP,
-      args
+      args,
+      apiKey
     );
     
     return {

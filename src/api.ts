@@ -5,9 +5,15 @@ import { log } from './utils.js';
  * Unified API request function
  * @param endpoint API endpoint
  * @param data Request data
+ * @param apiKey Optional per-session API key (falls back to global API_KEY)
  * @returns API response
  */
-export async function makeRequest<T>(endpoint: string, data: any): Promise<T> {
+export async function makeRequest<T>(endpoint: string, data: any, apiKey?: string): Promise<T> {
+  const key = apiKey || API_KEY;
+  if (!key) {
+    throw new Error("API key is required. Provide SEARCH1API_KEY or pass apiKey per-session.");
+  }
+
   const startTime = Date.now();
   const baseUrl = API_CONFIG.BASE_URL.replace(/\/+$/, '');
   const path = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
@@ -21,7 +27,7 @@ export async function makeRequest<T>(endpoint: string, data: any): Promise<T> {
     const response = await fetch(url, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${API_KEY}`,
+        'Authorization': `Bearer ${key}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data)

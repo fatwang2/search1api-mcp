@@ -1,9 +1,8 @@
 import {
   Server
-} from "@modelcontextprotocol/sdk/server/index.js"; 
-import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { 
-  McpError, 
+} from "@modelcontextprotocol/sdk/server/index.js";
+import {
+  McpError,
   ErrorCode,
   CallToolRequestSchema,
   ListResourcesRequestSchema,
@@ -17,11 +16,12 @@ import { ALL_TOOLS } from "./tools/index.js";
 
 /**
  * Create and configure MCP server
+ * @param apiKey Optional per-session API key (used in HTTP mode)
+ * @returns Server instance ready to be connected to a transport
  */
-export function createServer() {
+export function createMcpServer(apiKey?: string): Server {
   log("Creating Search1API MCP server");
 
-  // Create server instance
   const server = new Server({
     name: "search1api-server",
     version: "1.0.0"
@@ -32,31 +32,9 @@ export function createServer() {
     }
   });
 
-  // Set up request handlers
-  setupRequestHandlers(server);
+  setupRequestHandlers(server, apiKey);
 
-  // Create STDIO transport
-  const transport = new StdioServerTransport();
-
-  return {
-    start: async () => {
-      try {
-        await server.connect(transport);
-        log("Server started successfully");
-      } catch (error) {
-        log("Failed to start server:", error);
-        throw error;
-      }
-    },
-    stop: async () => {
-      try {
-        await server.close();
-        log("Server stopped");
-      } catch (error) {
-        log("Error stopping server:", error);
-      }
-    }
-  };
+  return server;
 }
 
 /**
@@ -64,11 +42,11 @@ export function createServer() {
  */
 function handleError(context: string, error: unknown): never {
   log(`Error ${context}:`, error);
-  
+
   if (error instanceof McpError) {
     throw error;
   }
-  
+
   throw new McpError(
     ErrorCode.InternalError,
     `${context}: ${formatError(error)}`
@@ -78,15 +56,15 @@ function handleError(context: string, error: unknown): never {
 /**
  * Set up server request handlers
  */
-function setupRequestHandlers(server: Server) {
+function setupRequestHandlers(server: Server, apiKey?: string) {
   // Handle tool calls
   server.setRequestHandler(CallToolRequestSchema, async (request) => {
     try {
       const toolName = request.params.name;
       const toolArgs = request.params.arguments;
-      
+
       log(`Tool call received: ${toolName}`);
-      return await handleToolCall(toolName, toolArgs);
+      return await handleToolCall(toolName, toolArgs, apiKey);
     } catch (error) {
       handleError("handling tool call", error);
     }
@@ -106,7 +84,7 @@ function setupRequestHandlers(server: Server) {
     try {
       const resourceUri = request.params.uri;
       const resource = handleReadResource(resourceUri);
-      
+
       return {
         contents: [{
           uri: resourceUri,
@@ -122,14 +100,5 @@ function setupRequestHandlers(server: Server) {
   // Handle tool listing
   server.setRequestHandler(ListToolsRequestSchema, async () => {
     return { tools: ALL_TOOLS };
-  });
-
-  // Handle global errors
-  process.on("uncaughtException", (error) => {
-    log("Uncaught exception:", error);
-  });
-
-  process.on("unhandledRejection", (reason) => {
-    log("Unhandled rejection:", reason);
   });
 }
