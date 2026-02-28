@@ -7,7 +7,7 @@ import { McpError, ErrorCode } from "@modelcontextprotocol/sdk/types.js";
 /**
  * Implementation of the deep thinking and complex reasoning tool
  */
-export async function handleReasoning(args: unknown) {
+export async function handleReasoning(args: unknown, apiKey?: string) {
   if (!isValidReasoningArgs(args)) {
     throw new McpError(
       ErrorCode.InvalidParams,
@@ -19,10 +19,6 @@ export async function handleReasoning(args: unknown) {
   log("Processing reasoning request");
 
   try {
-    /**
-     * Implementation of the deep thinking and complex reasoning tool
-     */
-    
     // Convert to API required format
     const apiRequestData = {
       model: "deepseek-r1-70b-fast-online",
@@ -34,11 +30,11 @@ export async function handleReasoning(args: unknown) {
       ],
       stream: false
     };
-    
-    // Use the correct structure of ReasoningResponse
+
     const response = await makeRequest<ReasoningResponse>(
       API_CONFIG.ENDPOINTS.REASONING,
-      apiRequestData // Using converted format instead of raw args
+      apiRequestData,
+      apiKey
     );
     
     // Directly use the correct structure of ReasoningResponse

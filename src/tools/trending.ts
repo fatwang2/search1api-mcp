@@ -7,7 +7,7 @@ import { McpError, ErrorCode } from "@modelcontextprotocol/sdk/types.js";
 /**
  * Implementation of the trending tool
  */
-export async function handleTrending(args: unknown) {
+export async function handleTrending(args: unknown, apiKey?: string) {
   if (!isValidTrendingArgs(args)) {
     throw new McpError(
       ErrorCode.InvalidParams,
@@ -18,7 +18,8 @@ export async function handleTrending(args: unknown) {
   try {
     const response = await makeRequest<TrendingResponse>(
       API_CONFIG.ENDPOINTS.TRENDING,
-      args  
+      args,
+      apiKey
     );
 
     return {

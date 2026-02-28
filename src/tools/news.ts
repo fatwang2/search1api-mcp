@@ -7,7 +7,7 @@ import { McpError, ErrorCode } from "@modelcontextprotocol/sdk/types.js";
 /**
  * Implementation of the news search tool
  */
-export async function handleNews(args: unknown) {
+export async function handleNews(args: unknown, apiKey?: string) {
   if (!isValidNewsArgs(args)) {
     throw new McpError(
       ErrorCode.InvalidParams,
@@ -20,7 +20,8 @@ export async function handleNews(args: unknown) {
   try {
     const response = await makeRequest<NewsResponse>(
       API_CONFIG.ENDPOINTS.NEWS,
-      args
+      args,
+      apiKey
     );
     
     return {

@@ -7,7 +7,7 @@ import { McpError, ErrorCode } from "@modelcontextprotocol/sdk/types.js";
 /**
  * Implementation of the crawl tool
  */
-export async function handleCrawl(args: unknown) {
+export async function handleCrawl(args: unknown, apiKey?: string) {
   if (!isValidCrawlArgs(args)) {
     throw new McpError(
       ErrorCode.InvalidParams,
@@ -23,7 +23,8 @@ export async function handleCrawl(args: unknown) {
     const startTime = Date.now();
     const response = await makeRequest<CrawlResponse>(
       API_CONFIG.ENDPOINTS.CRAWL,
-      { url }
+      { url },
+      apiKey
     );
     const endTime = Date.now();
     log(`Crawl completed successfully in ${endTime - startTime}ms`);
