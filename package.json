@@ -12,6 +12,7 @@
   ],
   "scripts": {
     "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\" && node -e \"if (!require('fs').existsSync('.env.example')) { require('fs').writeFileSync('.env.example', '# Search1API Configuration\\n# Get your API key from https://www.search1api.com/?utm_source=mcp\\nSEARCH1API_KEY=your_api_key_here\\n') }\"",
+    "start": "node build/http.js",
     "prepare": "npm run build",
     "watch": "tsc --watch",
     "inspector": "npx @modelcontextprotocol/inspector build/index.js",
