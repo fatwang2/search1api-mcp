@@ -95,6 +95,18 @@ claude mcp add --transport http search1api https://mcp.search1api.com/mcp \
 }
 ```
 
+## Agent Skill
+
+本仓库还提供了 **Agent Skill**，教会 Agent *如何* 高效使用 Search1API —— 包含决策策略（何时搜索、何时爬取、如何根据意图调整参数）、多步工作流和约束规则。
+
+Skill 支持两种执行模式：优先使用 **MCP 工具**，若 Agent 不支持 MCP（如 OpenClaw），则回退到内置的 **shell 脚本**。
+
+```bash
+npx skills add fatwang2/search1api-mcp
+```
+
+即使你已经在使用上面的 MCP 服务，Skill 依然能提供额外的策略层，帮助 Agent 做出更聪明的决策 —— 比如根据研究深度自动调整 `max_results`、根据查询语言选择合适的 `search_service`、或执行搜索 → 爬取 → 综合的多步工作流。详见 [`skills/`](./skills) 目录。
+
 ## 本地模式（stdio）
 
 如果你更倾向于在本地运行，通过 npx 即可使用，无需克隆仓库：
