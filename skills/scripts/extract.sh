@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Extract structured data from a URL via Search1API.
 # Usage: bash scripts/extract.sh "<url>" "<prompt>" '<json_schema>'
-source "$(dirname "$0")/_common.sh"
+source "$(dirname "$0")/common.sh"
 
 url="${1:-}"
 prompt="${2:-}"

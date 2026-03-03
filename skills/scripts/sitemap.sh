@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Discover all links on a URL / domain via Search1API.
 # Usage: bash scripts/sitemap.sh "<url>"
-source "$(dirname "$0")/_common.sh"
+source "$(dirname "$0")/common.sh"
 
 url="${1:-}"
 

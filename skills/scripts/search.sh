@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Web search via Search1API.
 # Usage: bash scripts/search.sh "<query>" [max_results] [search_service] [language] [time_range]
-source "$(dirname "$0")/_common.sh"
+source "$(dirname "$0")/common.sh"
 
 query="${1:-}"
 max_results="${2:-5}"

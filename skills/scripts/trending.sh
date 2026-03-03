@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Get trending topics from a platform via Search1API.
 # Usage: bash scripts/trending.sh [search_service] [max_results]
-source "$(dirname "$0")/_common.sh"
+source "$(dirname "$0")/common.sh"
 
 search_service="${1:-google}"
 max_results="${2:-10}"
