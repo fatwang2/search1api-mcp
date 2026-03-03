@@ -107,6 +107,18 @@ npx skills add fatwang2/search1api-mcp
 
 即使你已经在使用上面的 MCP 服务，Skill 依然能提供额外的策略层，帮助 Agent 做出更聪明的决策 —— 比如根据研究深度自动调整 `max_results`、根据查询语言选择合适的 `search_service`、或执行搜索 → 爬取 → 综合的多步工作流。详见 [`skills/`](./skills) 目录。
 
+**快速开始 —— 复制以下内容发送给你的 Agent：**
+
+```
+I want to use Search1API for web search and content retrieval. Install the skill (npx skills add fatwang2/search1api-mcp), help me complete the setup, and run a quick test to verify it works.
+```
+
+**更新 Skill：**
+
+```
+Update my installed skills to the latest version: npx skills update
+```
+
 ## 本地模式（stdio）
 
 如果你更倾向于在本地运行，通过 npx 即可使用，无需克隆仓库：
