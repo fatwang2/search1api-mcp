@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/fatwang2-search1api-mcp-badge.png)](https://mseep.ai/app/fatwang2-search1api-mcp)
+
 # Search1API MCP Server
 
 [中文文档](./README_zh.md)
