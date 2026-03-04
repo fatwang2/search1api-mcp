@@ -7,7 +7,7 @@ query="${1:-}"
 max_results="${2:-5}"
 search_service="${3:-google}"
 language="${4:-en}"
-time_range="${5:-year}"
+time_range="${5:-}"
 
 if [[ -z "$query" ]]; then
   echo "Usage: $0 \"<query>\" [max_results] [search_service] [language] [time_range]" >&2
@@ -25,11 +25,7 @@ payload=$(jq -n \
     max_results: $mr,
     search_service: $ss,
     crawl_results: 0,
-    image: false,
-    include_sites: [],
-    exclude_sites: [],
-    language: $lang,
-    time_range: $tr
-  }')
+    language: $lang
+  } | if $tr != "" then . + {time_range: $tr} else . end')
 
 api_post "/search" "$payload"

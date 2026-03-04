@@ -3,13 +3,18 @@ name: search1api
 description: >
   Read, fetch, or summarize content from any URL or link the user shares.
   Also provides web search, news search, structured data extraction, sitemap
-  discovery, and trending topics via Search1API. Use when the user pastes or
-  sends a URL and wants to know what it says, get a summary, read the page,
-  or extract information from it. Also use when the user asks to search the
-  web, find news, look something up online, extract structured data from
-  pages, discover sitemaps, check trending topics, or query API usage.
-  Supports multiple search engines (Google, Bing, DuckDuckGo, Yahoo, etc.)
-  with language and time-range filters.
+  discovery, trending topics, and deep reasoning via Search1API. Use this
+  skill whenever the user pastes or sends a URL and wants to know what it
+  says, get a summary, read the page, or extract information from it. Also
+  use when the user asks to search the web, find news, look something up
+  online, research a topic, do deep research, extract structured data from
+  pages, discover sitemaps, check trending topics, or query API usage. This
+  skill should be used even when the user doesn't explicitly say "search" —
+  phrases like "find out about", "what's happening with", "look up", "any
+  news on", "what does this link say", or sharing a bare URL all indicate
+  this skill should be used. Supports multiple search engines (Google, Bing,
+  DuckDuckGo, Baidu, Reddit, GitHub, YouTube, arXiv, etc.) with language
+  and time-range filters.
 ---
 
 # Search1API
@@ -31,6 +36,7 @@ If MCP tools are not available (e.g. OpenClaw or other bash-based agents), use t
 - **User wants structured data** → extract with a JSON Schema
 - **User wants to explore a site** → sitemap
 - **User wants trending topics** → trending
+- **User wants deep thinking on a problem** → reasoning
 - **User asks about API quota** → usage
 
 ## Dynamic tuning
@@ -107,6 +113,14 @@ Platforms: google, github, hackernews. Default: google, 10 results.
 bash scripts/extract.sh "<url>" "<prompt>" '<json_schema>'
 ```
 Extracts structured data according to a prompt and JSON Schema.
+
+### reasoning
+
+MCP tool only (no shell script). Pass a complex question or problem for deep analysis.
+
+```json
+reasoning({ "content": "Analyze the pros and cons of microservices vs monolith for a startup" })
+```
 
 ### usage
 ```bash

@@ -5,7 +5,7 @@ source "$(dirname "$0")/common.sh"
 
 query="${1:-}"
 max_results="${2:-5}"
-search_service="${3:-google}"
+search_service="${3:-bing}"
 language="${4:-en}"
 time_range="${5:-day}"
 

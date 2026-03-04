@@ -141,6 +141,20 @@ Returns a JSON object matching the provided schema.
 
 ---
 
+## POST /reasoning
+
+Deep thinking and complex problem solving.
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| content | string | yes | The question or problem that needs deep analysis |
+
+### Response shape
+
+Returns a text response with the reasoning result.
+
+---
+
 ## GET /usage
 
 Returns current API quota and consumption. No parameters.
