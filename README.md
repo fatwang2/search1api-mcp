@@ -97,26 +97,11 @@ claude mcp add --transport http search1api https://mcp.search1api.com/mcp \
 
 ## Agent Skill
 
-This repo also includes an **Agent Skill** that teaches agents *how* to use Search1API effectively — with decision strategies (when to search vs. crawl, how to tune parameters for different intents), multi-step workflows, and constraints.
-
-The skill works in two modes: it prefers **MCP tools** when available, and falls back to bundled **shell scripts** for agents that don't support MCP (e.g. OpenClaw).
+The Agent Skill has moved to [search1api-cli](https://github.com/fatwang2/search1api-cli). Install it with:
 
 ```bash
-npx skills add fatwang2/search1api-mcp
-```
-
-Even if you're already using the MCP server above, the skill adds a strategy layer that helps agents make smarter decisions — like adjusting `max_results` based on research depth, choosing the right `search_service` for a query, or running a multi-step search → crawl → synthesize workflow. See the [`skills/`](./skills) directory for details.
-
-**Quick start — copy and send this to your Agent:**
-
-```
-I want to use Search1API for web search and content retrieval. Install the skill (npx skills add fatwang2/search1api-mcp), help me complete the setup, and run a quick test to verify it works.
-```
-
-**Update skills:**
-
-```
-Update my installed skills to the latest version: npx skills update
+npm install -g search1api-cli
+npx skills add fatwang2/search1api-cli
 ```
 
 ## Local Mode (stdio)

@@ -97,26 +97,11 @@ claude mcp add --transport http search1api https://mcp.search1api.com/mcp \
 
 ## Agent Skill
 
-本仓库还提供了 **Agent Skill**，教会 Agent *如何* 高效使用 Search1API —— 包含决策策略（何时搜索、何时爬取、如何根据意图调整参数）、多步工作流和约束规则。
-
-Skill 支持两种执行模式：优先使用 **MCP 工具**，若 Agent 不支持 MCP（如 OpenClaw），则回退到内置的 **shell 脚本**。
+Agent Skill 已迁移至 [search1api-cli](https://github.com/fatwang2/search1api-cli)。安装方式：
 
 ```bash
-npx skills add fatwang2/search1api-mcp
-```
-
-即使你已经在使用上面的 MCP 服务，Skill 依然能提供额外的策略层，帮助 Agent 做出更聪明的决策 —— 比如根据研究深度自动调整 `max_results`、根据查询语言选择合适的 `search_service`、或执行搜索 → 爬取 → 综合的多步工作流。详见 [`skills/`](./skills) 目录。
-
-**快速开始 —— 复制以下内容发送给你的 Agent：**
-
-```
-I want to use Search1API for web search and content retrieval. Install the skill (npx skills add fatwang2/search1api-mcp), help me complete the setup, and run a quick test to verify it works.
-```
-
-**更新 Skill：**
-
-```
-Update my installed skills to the latest version: npx skills update
+npm install -g search1api-cli
+npx skills add fatwang2/search1api-cli
 ```
 
 ## 本地模式（stdio）
