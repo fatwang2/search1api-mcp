@@ -9,6 +9,10 @@ The official MCP server for [Search1API](https://www.search1api.com/?utm_source=
 1. Register at [Search1API](https://www.search1api.com/?utm_source=mcp)
 2. Get your API key from the dashboard
 
+## Hosted deployment
+
+A hosted deployment is available on [Fronteir AI](https://fronteir.ai/mcp/fatwang2-search1api-mcp).
+
 ## Quick Start (Remote MCP)
 
 No installation required. Just configure your MCP client with the remote URL and your API key.
